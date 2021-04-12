@@ -13,4 +13,5 @@ function calc() {
     var v = document.getElementById("txt").value;
     var y = eval(v);  
     document.getElementById("txt").value = y;
+    
 }
