@@ -4,19 +4,48 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Prototype calculatrice</title>
     <script src="calculatrice.js"></script>
 </head>
 <body>
-    <input type="text" id="afficheur">
-    <button onclick="ClickNumber(1)">1</button>
-    <button onclick="ClickNumber(2)">2</button>
-    <button onclick="ClickNumber(3)">3</button>
-    <button onclick="Operation('+')">+</button>
-    <button onclick="Operation('-')">-</button>
-    <button onclick="Operation('*')">*</button>
-    <button onclick="Operation('/')">/</button>
-    <button onclick="Egale()">=</button>
-    <button onclick="Init()">C</button>
+    <div class="table">
+        <table border="1">
+            <thead>
+                
+            <tbody>
+                <tr><td colspan="4" class="titre">Calcularice</td></tr>
+                </thead>
+                <tr>
+                    <td><input type="button" value="C"  id="clr" onclick="Init()"></td>
+                    <td colspan="3"><input type="text" id="afficheur" readonly ></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="+" id="val" onclick="Operation('+')"></td>
+                    <td><input type="button" value="1" id="val" onclick="ClickNumber(1)"></td>
+                    <td><input type="button" value="2" id="val" onclick="ClickNumber(2)"></td>
+                    <td><input type="button" value="3" id="val" onclick="ClickNumber(3)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="-" id="val" onclick="Operation('-')"></td>
+                    <td><input type="button" value="4" id="val" onclick="ClickNumber(4)"></td>
+                    <td><input type="button" value="5" id="val" onclick="ClickNumber(5)"></td>
+                    <td><input type="button" value="6" id="val" onclick="ClickNumber(6)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="*" id="val" onclick="Operation('*')"></td>
+                    <td><input type="button" value="7" id="val" onclick="ClickNumber(7)"></td>
+                    <td><input type="button" value="8" id="val" onclick="ClickNumber(8)"></td>
+                    <td><input type="button" value="9" id="val" onclick="ClickNumber(9)"></td>
+                </tr>
+                <tr>
+                    <td><input type="button" value="/" id="val" onclick="Operation('/')"></td>
+                    <td><input type="button" value="." id="val" onclick="affiche('.')"></td>
+                    <td><input type="button" value="0" id="val" onclick="ClickNumber(0)"></td>
+                    <td><input type="button" value="=" id="eq" onclick="Egale()"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>
