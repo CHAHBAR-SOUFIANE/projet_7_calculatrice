@@ -6,6 +6,7 @@
 }
 
 input[type="submit"]{
+    outline: none;
     border-radius: 10px;
     background-color:#ff4456;
     color: black;
