@@ -5,7 +5,7 @@
    margin :auto
 }
 
-input[type="button"]{
+input[type="submit"]{
     border-radius: 10px;
     background-color:#ff4456;
     color: black;
@@ -13,7 +13,7 @@ input[type="button"]{
     width:100%;
 }
 
-input[type="button"]:hover{
+input[type="submit"]:hover{
     background-color: #44FFED;
 }
 
@@ -21,7 +21,7 @@ input[type="text"]{
 border-radius: 10px;
 color: black;
 border-color:#080808 ;
-width:95.5%;
+width:100%;
 }
 
 
