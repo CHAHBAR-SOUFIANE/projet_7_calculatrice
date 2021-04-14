@@ -1,3 +1,6 @@
+*{
+    box-sizing: border-box;
+}
 body{
     background-image: url("1.jpeg");
 }
@@ -35,6 +38,7 @@ input[type="button"]:hover{
 }
 
 input[type="text"]{
+    font-size: 2rem;
 border-radius: 10px;
 color: black;
 border-color:#080808 ;
