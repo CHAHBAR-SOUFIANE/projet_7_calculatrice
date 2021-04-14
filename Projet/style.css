@@ -1,0 +1,27 @@
+.titre{
+   color:#ff4456;
+   border : solid black 1px;
+   border-radius: 10px;
+   margin :auto
+}
+
+input[type="button"]{
+    border-radius: 10px;
+    background-color:#ff4456;
+    color: black;
+    border-color:#ff4456 ;
+    width:100%;
+}
+
+input[type="button"]:hover{
+    background-color: #44FFED;
+}
+
+input[type="text"]{
+border-radius: 10px;
+color: black;
+border-color:#080808 ;
+width:95.5%;
+}
+
+
