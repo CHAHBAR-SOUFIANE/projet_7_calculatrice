@@ -7,8 +7,9 @@
         {
             "type": "pwa-chrome",
             "request": "launch",
-            "name": "Open calculatrice.html",
-            "file": "c:\\Users\\ADMIN\\Google Drive\\Github-Clone\\Suivi-de-code\\Projets\\projet_7_calculatrice\\Projet\\calculatrice.html"
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:5500",
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }
