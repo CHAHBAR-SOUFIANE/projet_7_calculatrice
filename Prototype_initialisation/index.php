@@ -24,7 +24,17 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
     <form method="POST">
     <table border="1">
         <thead>
-            
+        <tbody>
+        <tr>
+            <td colspan="4"><input type="text" name="text" readonly ></td>
+        </tr>
+        <td><input type="submit" name="1" value="1"></td>
+        <td><input type="submit" name="2" value="2"></td>
+        <td><input type="submit" name="add" value="+"></td>
+        <td><input type="submit" name="equal" value="="></td> 
+        </tbody>
+
+<!--             
         <tbody>
             <tr><td colspan="4" class="titre">Calcularice</td></tr>
             </thead>
@@ -60,9 +70,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
                 <td><input type="submit" name="divition" value="/"></td>
                 <td><input type="submit" name="," value="."></td>
                 <td><input type="submit" name="0" value="0"></td>
-                <td><input type="submit" name="equal" value="="></td>
+                <td><input type="submit" name="equal" value="="></td> 
             </tr>
-        </tbody>
+        </tbody>-->
     </table> 
     </form>
 </body>
