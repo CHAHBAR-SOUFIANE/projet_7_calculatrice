@@ -1,99 +1,140 @@
-class Calculator{
-    constructor(previousOperandTextElement, currentOperandTextElement){
-        this.previousOperandTextElement = previousOperandTextElement
-        this.currentOperandTextElement = currentOperandTextElement
-        this.clear()
+//add class calculatrice
+class Calculatrice{
+    constructor(preTXT,actuelTXT){
+        this.preTXT = preTXT 
+        this.actuelTXT = actuelTXT
+        this.vider()
     }
 
-    clear(){
-        this.currentOperand = ""
-        this.previousOperand = ""
+    vider(){
+        this.preOperation = ""
+        this.actuelOperation = ""
         this.operation = undefined
     }
 
-    delete(){
-
+    effacer(){
+        this.actuelOperation = this.actuelOperation.slice(0,-1)
     }
 
-    appendNumber(number){
-        if(number === "." && this.currentOperand.includes(".")) return
-        this.currentOperand += number
+    ajouterNombre(nombre){ 
+        if(this.actuelOperation.includes(".") && nombre == ".")return
+            this.actuelOperation += nombre
+       
+        
     }
 
-    chooseOperation(operation){
-        if(this.currentOperand === "") return
-        if(this.previousOperand !== ""){
-            this.compute()
-        }
-        this.operation = operation
-        this.previousOperand = this.currentOperand
-        this.currentOperand = ""
+    ajouterOperation(operation){
+       
+        if(this.actuelOperation == "") return
+        // if(this.actuelOperation == ""){
+        //     var tempPreTXT = preTXT.textContent.length
+        //     var oldop = preTXT.textContent.slice(-1,tempPreTXT)
+        //     if (oldop != operation) {
+        //         var newpreTXT = preTXT.textContent.slice(0,-1)
+        //         preTXT.textContent = newpreTXT + operation
+        //     }
+        // }
+        if(this.preOperation != "") {this.calculer()}
+       this.operation = operation 
+       this.preOperation = this.actuelOperation 
+       this.actuelOperation = ""
     }
-
-    compute(){
-        let computation
-        let prev = parseFloat(this.previousOperand)
-        let current = parseFloat(this.currentOperand)
-        if (isNaN(prev) || isNaN(current)) return
-        switch (this.operation) {
-            case "+":
-                computation = prev + current
+    
+    calculer(){
+       let an = parseFloat(this.actuelOperation) 
+       let pn = parseFloat(this.preOperation) 
+       let resultat
+       if(isNaN(an) || isNaN(pn) ) return
+       switch (this.operation) {
+           case "+":
+               resultat = pn + an
+               break;
+           case "-":
+                resultat = pn - an 
                 break;
-            case "-":
-                computation = prev - current
-                break;
-            case "*":
-                computation = prev * current
+           case "*":
+                resultat = pn * an
                 break;
             case "÷":
-                computation = prev / current
+                resultat = pn / an
                 break;
-            default:
-                return    
-        }
-        this.currentOperand = computation
-        this.previousOperand = ""
-        this.operation = ""
+           default:
+              return
+       }
+
+       this.actuelOperation = resultat
+        this.preOperation = ""
+        this.operation = undefined
+    //    let resultatToString = resultat.toString()
+    //    let resultatToStringToArray = resultatToString.split("")
+    //    let rsa = resultatToStringToArray
+    //    if (rsa[2] == "0" && rsa[3] == "0" && rsa[4] == "0") {
+    //     this.actuelOperation = resultat
+    //     this.preOperation = ""
+    //     this.operation = undefined
+    //    }else{
+    //     this.actuelOperation = resultat.toFixed(6)
+    //     this.preOperation = ""
+    //     this.operation = undefined
+    //    }
+      
     }
 
-    updateDisplay(){
-        this.currentOperandTextElement.textContent = this.currentOperand
-        this.previousOperandTextElement.textContent = this.previousOperand
+    afficher(){
+      this.actuelTXT.textContent = this.actuelOperation
+      if (this.operation != null) {
+        this.preTXT.textContent = `${this.preOperation} ${this.operation}`
+      }else{
+        this.preTXT.textContent = ""
+      }
+     
     }
+    
 
 }
-const numberButtons = document.querySelectorAll("[data-number]")
-const operationButtons = document.querySelectorAll("[data-operation]") 
-const equalsButton = document.querySelectorAll("[data-equals]")
-const deleteButton = document.querySelectorAll("[data-delete]")
-const allClearButton = document.querySelectorAll("[data-all-clear]")
-const previousOperandTextElement = document.querySelector("[data-previous-operand]")
-const currentOperandTextElement = document.querySelector("[data-current-operand]")
 
-const calculator = new Calculator(previousOperandTextElement,currentOperandTextElement)
+//declaré les variable
+var acBTN = document.querySelector("[data-AC]")
+var preTXT = document.querySelector("[data-up]")
+var actuelTXT = document.querySelector("[data-down]")
+var dBTN = document.querySelector("[data-delete]")
+var nBTN = document.querySelectorAll("[data-number]")
+var oBTN = document.querySelectorAll("[data-operation]")
+var eBTN = document.querySelector("[data-equals]")
 
-numberButtons.forEach(button => {
-    button.addEventListener('click',()=>{
-        calculator.appendNumber(button.textContent)
-        calculator.updateDisplay()
+//instancie calculatrice à partir de class Calculatrice
+var calculatrice = new Calculatrice(preTXT,actuelTXT)
+
+//retrouver la valeur des nombres
+nBTN.forEach(button => {
+    button.addEventListener("click",() => {
+     calculatrice.ajouterNombre(button.textContent)
+     calculatrice.afficher()
     })
 })
 
-operationButtons.forEach(button =>{
-    button.addEventListener("click",() => {
-        calculator.chooseOperation(button.textContent)
-        calculator.updateDisplay()
-    })
-} )
+//Button vider
+acBTN.addEventListener("click",() => {
+    calculatrice.vider()
+    calculatrice.afficher()
+})
 
-equalsButton.forEach(button => {
+//retrouver l'operation
+oBTN.forEach(button => {
     button.addEventListener("click",() => {
-        calculator.compute()
-        calculator.updateDisplay()
+     calculatrice.ajouterOperation(button.textContent)
+     calculatrice.afficher()
     })
 })
 
+//Button Effacer 
+dBTN.addEventListener("click",() => {
+    calculatrice.effacer()
+    calculatrice.afficher()
+})
 
-
-
-
+//Button calculer
+eBTN.addEventListener("click",() => {
+    calculatrice.calculer()
+    calculatrice.afficher()
+})
