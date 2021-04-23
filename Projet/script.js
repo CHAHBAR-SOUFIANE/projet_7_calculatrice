@@ -97,11 +97,3 @@ equalsButton.forEach(button => {
 
 
 
-
-
-
-
-
-
-
-
