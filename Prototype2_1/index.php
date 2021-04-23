@@ -81,9 +81,9 @@ $aff = "";
         <td><input type="submit" name="op" value="+"></td>
         <td><input type="submit" name="equal" value="="></td> 
         </tbody>
-        <input type="input" name="x" value="<?php echo $x ?>" >
-        <input type="input" name="op" value="<?php echo $oper?>">
-        <input type="input" name="y" value="<?php echo $y ?>">
+        <input type="input" hidden name="x" value="<?php echo $x ?>" >
+        <input type="input" hidden name="op" value="<?php echo $oper?>">
+        <input type="input" hidden name="y" value="<?php echo $y ?>">
         
 
 <!--             
