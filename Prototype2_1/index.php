@@ -5,7 +5,7 @@ $oper = null;
 $solu = null;
 $aff = "";
 
-if($_SERVER['REQUEST_METHOD'] == "POST"){
+// if($_SERVER['REQUEST_METHOD'] == "POST"){
     //recuperri le variable
    if (isset($_POST["x"])) $x = $_POST["x"] ;
    if (isset($_POST["y"])) $y = $_POST["y"] ;
@@ -15,40 +15,48 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
    if(isset($_POST["nb"])){
     $nbr = $_POST["nb"];
     if($oper == null){
-        if ($x == null) {
-            $x = $nbr;
-         }else{$x = floatval($x.$nbr);}
+        if ($x == null) $x = $nbr;
+        else $x = floatval($x . $nbr);
+             }else{
+                  if($y == null) $y = $nbr;
+                  else $y = floatval($y . $nbr);
+              }
     } 
 
-    if($oper != null){
-        if ($y == null) {
-            $y = $nbr;
-        }else {
-            $y = floatval($y.$nbr);
-        }
-    }
-   }
+ 
   
    if (isset($_POST["equal"])) {
        $equal = $_POST["equal"];
 
-       switch ($equal) {
+       switch ($oper) {
            case '+':
-            $solu = $x +$y;
+            $solu = $x + $y;
                break;
            
            default:
-               return;
-               
+               return;     
        }
    }
 
-
-   //Affichage
-   if ($solu == null) {$aff = $solu}
-       
    
 
+   //Affichage
+   if ($solu != null) $aff = $solu;
+   else {
+       if ($x != null) $aff .= $x;
+       if ($oper != null) $aff = $aff . " " . $oper . " ";
+       if ($y != null) $aff .= $y;
+   }
+   //Effacer
+   if (isset($_POST["C"])) {
+    $effa = $_POST["C"];
+    $aff = "";
+    $x = null;
+    $y = null;
+    $oper = null;
+   }
+
+// }   
 ?>
 
 <html lang="en">
@@ -65,16 +73,18 @@ if($_SERVER['REQUEST_METHOD'] == "POST"){
         <thead>
         <tbody>
         <tr>
-            <td colspan="4"><input type="text" name="text" value="<?php echo $num1 ?>" readonly ></td>
+            <td colspan="4"><input type="text" name="text" value="<?php echo $aff ?>" readonly ></td>
         </tr>
+        <td><input type="submit" name="C" value="C"></td>
         <td><input type="submit" name="nb" value="1"></td>
         <td><input type="submit" name="nb" value="2"></td>
-        <td><input type="submit" name="add" value="+"></td>
+        <td><input type="submit" name="op" value="+"></td>
         <td><input type="submit" name="equal" value="="></td> 
         </tbody>
         <input type="input" name="x" value="<?php echo $x ?>" >
+        <input type="input" name="op" value="<?php echo $oper?>">
         <input type="input" name="y" value="<?php echo $y ?>">
-        <input type="inpu" name="op" value="<?php echo $oper?>">
+        
 
 <!--             
         <tbody>
