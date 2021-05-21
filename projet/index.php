@@ -44,7 +44,7 @@ require "treatment.php";
         <button name="op" value="-">-</button>
         <!-- <button data-number>.</button> -->
         
-        <button name="equal" class="span-foor">=</button>
+        <button name="equal" class="span-foor equal">=</button>
     </div>
        
 </form>
