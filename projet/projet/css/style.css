@@ -1,0 +1,131 @@
+*{ 
+    box-sizing: border-box;
+    font-family: Gotham Rounded,sans-serif;
+    font-weight: normal;
+}
+
+body{
+    padding:0;
+    margin: 0;
+    background: linear-gradient(to right,#00AAFF, #00FF6C);
+    transition: .5s;
+}
+
+.calculator-grid{
+    position: relative;
+    display: grid;
+    justify-content:center;
+    align-content: center;
+    min-height: 100vh;
+    grid-template-columns: repeat(4, 94px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 87px);
+}
+
+.calculator-grid > button{
+    font-size: 2rem;
+    border: 1px solid white;
+    outline: none;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.point{
+    border-bottom-left-radius: 22px;
+}
+
+.equal{
+    border-bottom-right-radius: 22px;
+}
+
+.calculator-grid > button:hover{
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.span-two{
+    grid-column: span 2;
+}
+
+.output{
+    grid-column: 1 / -1;
+    background-color: rgba(0, 0, 0, 0.75);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: flex-end;
+    padding: 10px;
+    align-items: flex-end;
+    word-wrap: break-word;
+    border-top-left-radius: 22px;
+    border-top-right-radius: 22px;
+}
+
+.output >.previous-operand{
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.5rem;
+}
+
+.output >.current-operand{
+    color: rgba(255, 255, 255);
+    font-size: 2.5rem;
+  }
+
+  @media (max-width:576px){
+    .calculator-grid{
+        grid-template-columns: repeat(4, 74px);
+    }
+  }
+
+  /* Toggle button */
+
+ .toggle{
+  position: absolute;
+  width: 4rem;
+  height: 2rem;
+  margin-left: 70.5%;
+  margin-top: 1%;
+ }
+
+.switch {
+    position: relative;
+    width: 4rem;
+    height: 2rem;
+    transition: .5s;
+  }
+
+  input{
+      width: 0;
+      height:0;
+  }
+
+  .slider{
+    position: absolute;
+    width: 3rem;
+    height: 1.09rem;
+    cursor: pointer;
+    background:  linear-gradient(to left,#00AAFF, #00FF6C);
+    transition: .5s;
+    border-radius: 50px;
+    border: 1px solid;
+  }
+
+  .slider::before{
+    content: "";
+    position: absolute;
+    cursor: pointer;
+    width: 0.8rem;
+    height: 0.8rem;
+    top: 0.1rem;
+    left: 0.1rem;
+    transition: .5s;
+    background-color:rgba(0, 0, 0, 0.75);;
+    border-radius: 50px;
+  }
+
+  input:checked + .slider {
+    background:  linear-gradient(to right,#00AAFF, #00FF6C);
+  }
+  input:checked + .slider::before {
+    transform: translate(2rem);
+  }
+
+  
